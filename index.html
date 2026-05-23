@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Spendly — Expense Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <div>
+      <div class="logo">spend<span>ly</span></div>
+      <div class="tagline">Track every rupee, own your finances.</div>
+    </div>
+    <div class="header-date" id="today-date"></div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-label">Total Spent</div>
+      <div class="stat-value accent" id="stat-total">₹0</div>
+      <div class="stat-sub" id="stat-sub-total">this period</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Transactions</div>
+      <div class="stat-value" id="stat-count">0</div>
+      <div class="stat-sub">recorded</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Biggest Spend</div>
+      <div class="stat-value" id="stat-max">₹0</div>
+      <div class="stat-sub" id="stat-max-desc">—</div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="main-grid">
+
+    <!-- Add Form -->
+    <div class="panel">
+      <div class="panel-title"><span class="dot"></span> Add Expense</div>
+
+      <div class="field">
+        <label>Description</label>
+        <input type="text" id="f-desc" placeholder="e.g. College canteen" maxlength="40"/>
+      </div>
+      <div class="field">
+        <label>Amount (₹)</label>
+        <input type="number" id="f-amount" placeholder="0.00" min="0" step="0.01"/>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Date</label>
+          <input type="date" id="f-date"/>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Category</label>
+        <div class="cat-grid" id="cat-grid">
+          <div class="cat-pill" data-cat="Food"><span class="cat-icon">🍔</span>Food</div>
+          <div class="cat-pill" data-cat="Transport"><span class="cat-icon">🚌</span>Transport</div>
+          <div class="cat-pill" data-cat="Entertainment"><span class="cat-icon">🎮</span>Fun</div>
+          <div class="cat-pill" data-cat="Shopping"><span class="cat-icon">🛍️</span>Shopping</div>
+          <div class="cat-pill" data-cat="Education"><span class="cat-icon">📚</span>Education</div>
+          <div class="cat-pill" data-cat="Other"><span class="cat-icon">📦</span>Other</div>
+        </div>
+      </div>
+
+      <button class="btn-add" onclick="addExpense()">+ Add Expense</button>
+      <div class="error" id="f-err"></div>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-panel">
+
+      <!-- Filter -->
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" data-filter="">All</button>
+        <button class="filter-btn" data-filter="Food">🍔 Food</button>
+        <button class="filter-btn" data-filter="Transport">🚌 Transport</button>
+        <button class="filter-btn" data-filter="Entertainment">🎮 Fun</button>
+        <button class="filter-btn" data-filter="Shopping">🛍️ Shopping</button>
+        <button class="filter-btn" data-filter="Education">📚 Education</button>
+        <button class="filter-btn" data-filter="Other">📦 Other</button>
+      </div>
+
+      <!-- Expense List -->
+      <div class="expense-list" id="expense-list"></div>
+
+      <!-- Category Chart -->
+      <div class="chart-panel" id="chart-panel" style="display:none;">
+        <div class="panel-title"><span class="dot"></span> Spending Breakdown</div>
+        <div class="chart-bars" id="chart-bars"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
